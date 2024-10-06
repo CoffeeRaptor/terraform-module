@@ -77,7 +77,7 @@ resource "aws_security_group_rule" "allow_all_outbound" {
 }
 
 resource "aws_launch_configuration" "example" {
-  image_id        = "ami-0af698e8b97debc7d"
+  image_id        = var.ami
   instance_type   = var.instance_type
   security_groups = [aws_security_group.instance.id]
 
@@ -85,6 +85,7 @@ resource "aws_launch_configuration" "example" {
     server_port = var.server_port
     db_address  = data.terraform_remote_state.db.outputs.address
     db_port     = data.terraform_remote_state.db.outputs.port
+    server_text = var.server_text
   })
 
   lifecycle {
@@ -165,7 +166,11 @@ resource "aws_autoscaling_group" "example" {
   }
 
   dynamic "tag" {
-    for_each = var.custom_tags
+    for_each = {
+     for key, value in var.custom_tags:
+      key => upper(value)
+      if key != "Name"
+    }
     content {
       key                 = tag.key
       value               = tag.value
