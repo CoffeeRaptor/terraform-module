@@ -34,3 +34,14 @@ variable "server_port" {
   type        = number
   default     = 8080
 }
+
+variable "custom_tags" {
+  description = "Custom tags to be set on the instances in ASG"
+  type = map(string)
+  default = {}
+}
+
+variable "enable_autoscaling"{
+  description = "Enable autoscaling if set to true"
+  type = bool
+}
