@@ -151,6 +151,7 @@ resource "aws_lb_listener_rule" "asg" {
 }
 
 resource "aws_autoscaling_group" "example" {
+  name = var.cluster_name
   launch_configuration = aws_launch_configuration.example.name
   vpc_zone_identifier  = data.aws_subnets.default.ids
   target_group_arns    = [aws_lb_target_group.asg.arn]
@@ -158,6 +159,13 @@ resource "aws_autoscaling_group" "example" {
 
   min_size = var.min_size
   max_size = var.max_size
+
+  instance_refresh {
+    strategy = "Rolling"
+    preferences {
+      min_healthy_percentage = 50
+    }
+  }
 
   tag {
     key                 = "Name"
