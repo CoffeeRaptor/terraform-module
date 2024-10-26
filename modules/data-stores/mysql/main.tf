@@ -19,6 +19,12 @@ terraform {
 
 provider "aws" {
   region = "eu-central-1"
+  alias  = "primary"
+}
+
+provider "aws" {
+  region = "eu-west-3"
+  alias  = "replica"
 }
 
 resource "aws_db_instance" "example" {
