@@ -7,7 +7,7 @@ data "terraform_remote_state" "db" {
   config = {
     bucket = var.db_remote_state_bucket # S3 bucket for the remote state
     key = var.db_remote_state_key    # Key (file path) in the S3 bucket
-    region = "us-east-2"                # Region where the S3 bucket is located
+    region = "eu-west-1"                # Region where the S3 bucket is located
   }
 }
 
