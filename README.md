@@ -4,7 +4,7 @@ This repository contains Terraform code for managing various AWS infrastructure 
 
 ## About This Project
 
-The code in this repository draws inspiration from the book *Terraform: Up & Running (3rd Edition)* by Yevgeniy Brikman. The book provides practical examples of infrastructure as code (IaC) principles, and this repository adapts those concepts to build AWS infrastructure using Terraform. 
+The code in this repository draws inspiration from the book *Terraform: Up & Running (3rd Edition)* by Yevgeniy Brikman. The book provides practical examples of infrastructure as code (IaC) principles, and this repository adapts those concepts to build AWS infrastructure using Terraform. ["Terraform Up & Running"] (https://www.terraformupandrunning.com/) by [Yevgeniy Brikman](https://github.com/brikis98). 
 
 ### Components Included
 
